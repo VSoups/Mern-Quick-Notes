@@ -10,7 +10,10 @@ export default function NotesPage() {
   const notesIndex = notes.map((note, idx) => <NoteBox noteText={note.text} key={idx} />);
 
   async function newNote(note) {
-    await notesAPI.addNote(note);
+    // sends note that user added to database
+    // then returns same note to update state
+    const n = await notesAPI.addNote(note);
+    setNotes([...notes, n]);
   }
 
   // render user notes (initial render)
@@ -21,16 +24,6 @@ export default function NotesPage() {
     }
     getNotes();
   }, []);
-
-  // looping with other useEffect
-  // useEffect(function() {
-  //   async function newNoteList() {
-  //     const notesList = await notesAPI.getAll();
-  //     setNotes(notesList);
-  //   }
-  //   newNoteList();
-  // }, [notes]);
-
 
   return (
     <>
