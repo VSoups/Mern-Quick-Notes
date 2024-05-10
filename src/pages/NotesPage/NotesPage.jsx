@@ -1,20 +1,34 @@
 import { useEffect, useState } from 'react';
-import * as usersService from '../../utilities/users-service';
 import NoteBox from '../../components/NoteBox/NoteBox';
 import NewNoteBox from '../../components/NewNoteBox/NewNoteBox';
 import * as notesAPI from '../../utilities/notes-api';
+import './NotesPage.css';
 
 export default function NotesPage() {
   const [notes, setNotes] = useState([]);
 
-  async function newNote(note) {
-    console.log('delivering: ', note);
-    await notesAPI.addNote(note);
+  const notesIndex = notes.map((note, idx) => <NoteBox noteText={note.text} key={idx} />);
 
+  async function newNote(note) {
+    await notesAPI.addNote(note);
   }
 
-  // useEffect(function() {
+  // render user notes (initial render)
+  useEffect(function() {
+    async function getNotes() {
+      const notesList = await notesAPI.getAll();
+      setNotes(notesList);
+    }
+    getNotes();
+  }, []);
 
+  // looping with other useEffect
+  // useEffect(function() {
+  //   async function newNoteList() {
+  //     const notesList = await notesAPI.getAll();
+  //     setNotes(notesList);
+  //   }
+  //   newNoteList();
   // }, [notes]);
 
 
@@ -24,9 +38,9 @@ export default function NotesPage() {
       <section className="NewNote">
         <NewNoteBox addNote={newNote} />
       </section>
-      <section className="NoteList">
-        {notes.length === 0 ? 'No notes yet' : <NoteBox />}
-      </section>
+      <ul className="NoteList">
+        {notes.length === 0 ? 'No notes yet' : notesIndex}
+      </ul>
     </>
   );
 }

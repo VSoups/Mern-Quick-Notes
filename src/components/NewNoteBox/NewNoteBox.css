@@ -1,0 +1,19 @@
+.NewNoteForm {
+    width: max-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.NoteInput {
+    resize: none;
+    
+}
+
+.SubmitBtn {
+    width: max-content;
+    background-color: cornflowerblue;
+    border: 3px solid black;
+    padding: 5px 10px;
+}

@@ -1,0 +1,10 @@
+.LoginBtn {
+    background-color: orange;
+    cursor: pointer;
+    grid-column: span 2;
+    margin: 1vmin 0 0;
+}
+
+.LoginBtn:hover {
+    background-color: darkorange;
+}

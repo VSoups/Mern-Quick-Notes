@@ -1,5 +1,5 @@
-export default function NoteBox() {
+export default function NoteBox({ noteText }) {
     return (
-        <h3>Note</h3>
+        <li>{noteText}</li>
     );
 }

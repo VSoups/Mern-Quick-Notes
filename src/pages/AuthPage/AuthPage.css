@@ -1,0 +1,11 @@
+.AuthSwapBtn {
+    width: 5rem;
+    height: 2rem;
+    background-color: orange;
+    margin-bottom: 1rem;
+    cursor: pointer;
+}
+
+.AuthSwapBtn:hover {
+    background-color: darkorange;
+}

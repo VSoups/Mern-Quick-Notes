@@ -1,0 +1,10 @@
+.SignUpBtn {
+    background-color: orange;
+    cursor: pointer;
+    grid-column: span 2;
+    margin: 1vmin 0 0;
+}
+
+.SignUpBtn:hover {
+    background-color: darkorange;
+}

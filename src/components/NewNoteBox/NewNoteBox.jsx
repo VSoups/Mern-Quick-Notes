@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import './NewNoteBox.css';
 
 export default function NewNoteBox({ addNote }) {
     const [noteText, setNoteText] = useState('');
@@ -6,6 +7,7 @@ export default function NewNoteBox({ addNote }) {
     function handleAddNote(evt) {
         evt.preventDefault();
         addNote(noteText);
+        evt.target.text.value = '';
     }
 
     function handleNoteText(evt) {
@@ -14,8 +16,8 @@ export default function NewNoteBox({ addNote }) {
 
     return (  
         <form className="NewNoteForm" onSubmit={handleAddNote}>
-            <textarea name="text" onChange={handleNoteText} placeholder="Enter note here..." className="NoteInput"></textarea>
-            <button type="submit">Add Note</button>
+            <textarea name="text" onChange={handleNoteText} placeholder="Enter note here..." cols="35" rows="5" className="NoteInput"></textarea>
+            <button type="submit" className="SubmitBtn">Add Note</button>
         </form>  
     );
 }
