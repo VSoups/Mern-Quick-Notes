@@ -7,12 +7,14 @@ import './NotesPage.css';
 export default function NotesPage() {
   const [notes, setNotes] = useState([]);
 
-  const notesIndex = notes.map((note, idx) => <NoteBox noteText={note.text} key={idx} />);
+  const notesIndex = notes.sort((n1, n2) => new Date(n2.createdAt) - new Date(n1.createdAt))
+  .map((note, idx) => <NoteBox noteText={note.text} time={note.createdAt} key={idx} />);
 
   async function newNote(note) {
     // sends note that user added to database
     // then returns same note to update state
     const n = await notesAPI.addNote(note);
+    console.log(n)
     setNotes([...notes, n]);
   }
 
