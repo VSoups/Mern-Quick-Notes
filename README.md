@@ -1,4 +1,4 @@
-# MERN-Stack Infrastructure
+# Mern Quick Notes Lab
 
-Clone this repo for future MERN-Stack projects
+Lab submission
 
